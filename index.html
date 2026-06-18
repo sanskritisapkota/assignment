@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanskriti Sapkota — CET138 Full Stack ePortfolio</title>
+<meta name="description" content="Single-page ePortfolio of Sanskriti Sapkota, ISMT Butwal, for CET138 Full Stack Development. Full Stack, HTML, CSS, Bootstrap and JavaScript with live demos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root{
+  --indigo:#6366f1;--purple:#a855f7;--pink:#ec4899;--rose:#f43f5e;--blue:#2563eb;--cyan:#06b6d4;
+  --green:#16a34a;--teal:#0d9488;--orange:#f59e0b;--red:#ef4444;--yellow:#eab308;
+  --ink:#1e1b2e;--muted:#6b7280;--bg:#f7f7fb;--card:#fff;
+  --shadow:0 12px 30px rgba(99,102,241,.12);--shadow-sm:0 6px 16px rgba(30,27,46,.08);
+  --grad:linear-gradient(120deg,var(--indigo),var(--purple) 55%,var(--pink));
+}
+*{box-sizing:border-box;scroll-behavior:smooth;}
+body{margin:0;font-family:'Poppins',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+h1,h2,h3,h4,h5,.brand{font-family:'Quicksand','Poppins',sans-serif;font-weight:700;}
+a{text-decoration:none;}
+img{max-width:100%;}
+.container{width:min(1140px,92%);margin:0 auto;}
+section{padding:70px 0;}
+section[id]{scroll-margin-top:74px;}
+/* Navbar */
+.nav{position:sticky;top:0;z-index:1000;background:rgba(30,27,46,.92);backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,.18);}
+.nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.nav .brand{color:#fff;font-size:1.25rem;display:flex;align-items:center;gap:8px;}
+.nav .brand span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav ul{list-style:none;display:flex;gap:6px;margin:0;padding:0;}
+.nav a.link{color:#cfd0e8;padding:8px 16px;border-radius:30px;font-weight:500;transition:.25s;font-size:.95rem;cursor:pointer;}
+.nav a.link:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nav a.link.active{background:var(--grad);color:#fff;}
+.nav .burger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;}
+@media(max-width:880px){.nav ul{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#1e1b2e;padding:14px;gap:4px;display:none;}.nav ul.open{display:flex;}.nav .burger{display:block;}}
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--grad);color:#fff;padding:90px 0;}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.12);}
+.hero::before{content:"";position:absolute;left:-80px;bottom:-140px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.08);}
+.hero .container{position:relative;z-index:2;}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:0 0 14px;line-height:1.15;}
+.hero p{font-size:1.1rem;max-width:680px;opacity:.95;}
+.hero .tags{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;}
+.hero .tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:7px 16px;border-radius:30px;font-weight:600;font-size:.9rem;}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.2);padding:6px 16px;border-radius:30px;font-weight:600;font-size:.85rem;letter-spacing:.5px;margin-bottom:18px;}
+.band{color:#fff;padding:54px 0;text-align:center;}
+.band h2{font-size:clamp(1.6rem,4vw,2.6rem);margin:0;}
+.band.b-fs{background:linear-gradient(120deg,#0d9488,#0ea5e9,#6366f1);}
+.band.b-html{background:linear-gradient(120deg,#e34f26,#f59e0b,#ef4444);}
+.band.b-css{background:linear-gradient(120deg,#2563eb,#06b6d4,#6366f1);}
+.band.b-bs{background:linear-gradient(120deg,#16a34a,#0d9488,#2563eb);}
+.band.b-js{background:linear-gradient(120deg,#eab308,#f59e0b,#ef4444);}
+.band .tags{justify-content:center;margin-top:18px;}
+/* Section heads */
+.sec-head{text-align:center;margin-bottom:46px;}
+.sec-head h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin:0 0 8px;}
+.sec-head p{color:var(--muted);margin:0;font-size:1.02rem;}
+.alt{background:#fff;}
+/* Cards & grids */
+.grid{display:grid;gap:22px;}
+.g2{grid-template-columns:repeat(2,1fr);}.g3{grid-template-columns:repeat(3,1fr);}.g4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:880px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.card{background:var(--card);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;border:1px solid #eee;transition:.25s;}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.card .head{padding:14px 18px;color:#fff;font-weight:600;display:flex;align-items:center;gap:8px;}
+.card .body{padding:18px;}
+.head-blue{background:linear-gradient(90deg,#2563eb,#3b82f6);}.head-green{background:linear-gradient(90deg,#16a34a,#22c55e);}
+.head-orange{background:linear-gradient(90deg,#f59e0b,#fbbf24);}.head-red{background:linear-gradient(90deg,#ef4444,#f87171);}
+.head-purple{background:linear-gradient(90deg,#7952b3,#a855f7);}.head-cyan{background:linear-gradient(90deg,#06b6d4,#22d3ee);}
+.head-pink{background:linear-gradient(90deg,#ec4899,#f472b6);}.head-teal{background:linear-gradient(90deg,#0d9488,#14b8a6);}
+.head-indigo{background:linear-gradient(90deg,#6366f1,#818cf8);}
+.feature{padding:26px;border-radius:18px;background:#fff;box-shadow:var(--shadow-sm);border:1px solid #eee;}
+.feature .ic{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;margin-bottom:14px;}
+.feature h4{margin:0 0 8px;}
+.feature ul{margin:10px 0 0;padding-left:18px;color:var(--muted);}
+.feature ul li{margin:4px 0;}
+/* Code blocks */
+pre.code{background:#1e293b;color:#e2e8f0;border-radius:12px;padding:16px;margin:0;font-family:'Fira Code',Consolas,monospace;font-size:.82rem;line-height:1.55;overflow:auto;}
+.preview{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:16px;margin-top:14px;}
+.preview .lbl{font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600;margin-bottom:8px;}
+/* Buttons */
+.btn{display:inline-block;border:none;cursor:pointer;border-radius:30px;padding:11px 24px;font-weight:600;font-family:inherit;font-size:.95rem;transition:.2s;text-decoration:none;}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:var(--shadow);}
+.btn-grad:hover{transform:translateY(-2px);filter:brightness(1.06);}
+.btn-light{background:#fff;color:var(--indigo);}.btn-light:hover{background:#f1f1ff;}
+.btn-outline-w{background:transparent;border:2px solid rgba(255,255,255,.7);color:#fff;}.btn-outline-w:hover{background:rgba(255,255,255,.15);}
+.btn-sm{padding:8px 16px;font-size:.85rem;}
+.btn-blue{background:var(--blue);color:#fff;}.btn-green{background:var(--green);color:#fff;}.btn-orange{background:var(--orange);color:#fff;}
+.btn-red{background:var(--red);color:#fff;}.btn-purple{background:var(--purple);color:#fff;}
+/* Badges */
+.badge2{display:inline-block;padding:4px 12px;border-radius:30px;font-size:.78rem;font-weight:600;color:#fff;margin:2px;}
+.b-html{background:#e34f26;}.b-css{background:#2965f1;}.b-js{background:#f7df1e;color:#000;}
+.b-react{background:#61dafb;color:#000;}.b-node{background:#3c873a;}.b-py{background:#3776ab;}
+.b-php{background:#777bb3;}.b-sql{background:#00758f;}.b-mongo{background:#13aa52;}
+/* Tables */
+table.tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);}
+table.tbl th{background:linear-gradient(90deg,var(--indigo),var(--purple));color:#fff;text-align:left;padding:12px 16px;}
+table.tbl td{padding:12px 16px;border-bottom:1px solid #eee;}
+table.tbl tr:last-child td{border-bottom:none;}
+/* Accordion */
+.acc-item{background:#fff;border:1px solid #eee;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.acc-q{width:100%;text-align:left;background:none;border:none;padding:16px 18px;font-weight:600;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;color:var(--ink);}
+.acc-a{max-height:0;overflow:hidden;transition:.3s;padding:0 18px;color:var(--muted);}
+.acc-a p{margin:0 0 16px;}
+.acc-item.open .acc-a{max-height:260px;padding-top:4px;}
+.acc-item.open .acc-q .chev{transform:rotate(180deg);}
+.chev{transition:.3s;}
+/* Forms */
+.field{margin-bottom:14px;}
+.field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px;}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:10px;font-family:inherit;font-size:.95rem;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(99,102,241,.18);}
+/* Demo helpers */
+.flex-demo{display:flex;gap:10px;justify-content:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e5e7eb;}
+.flex-demo .box,.grid-demo .box{background:linear-gradient(135deg,var(--indigo),var(--purple));color:#fff;border-radius:8px;padding:14px 18px;font-weight:600;text-align:center;}
+.grid-demo{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.live-target{transition:.3s;border-radius:14px;padding:26px;text-align:center;font-weight:700;background:#eef2ff;color:var(--indigo);}
+.swatch{width:42px;height:42px;border-radius:10px;border:2px solid #fff;box-shadow:var(--shadow-sm);cursor:pointer;display:inline-block;vertical-align:middle;}
+.hoverbtn{padding:14px 20px;border-radius:10px;color:#fff;font-weight:600;border:none;cursor:pointer;transition:.3s;}
+.hoverbtn.c1{background:var(--blue);}.hoverbtn.c1:hover{background:var(--purple);}
+.hoverbtn.c2{background:var(--green);}.hoverbtn.c2:hover{transform:scale(1.12);}
+.hoverbtn.c3{background:var(--orange);}.hoverbtn.c3:hover{transform:rotate(-6deg);}
+.layer{border-radius:14px;padding:16px;color:#fff;text-align:center;margin-bottom:10px;box-shadow:var(--shadow-sm);}
+.l-front{background:linear-gradient(135deg,#3b82f6,#2563eb);}.l-back{background:linear-gradient(135deg,#22c55e,#16a34a);}.l-db{background:linear-gradient(135deg,#fbbf24,#f59e0b);}
+.arrow{text-align:center;color:var(--indigo);font-size:1.3rem;margin:-2px 0 4px;}
+/* JS projects */
+.counter-num{font-size:2.6rem;font-weight:800;color:var(--indigo);}
+.calc .display{background:#1e293b;color:#fff;border-radius:10px;padding:14px;text-align:right;font-size:1.5rem;font-family:monospace;margin-bottom:10px;min-height:54px;word-break:break-all;}
+.calc .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.calc button{border:none;border-radius:10px;padding:14px 0;font-weight:600;font-size:1rem;background:#eef2ff;color:var(--ink);cursor:pointer;transition:.15s;}
+.calc button:hover{background:#e0e7ff;}
+.calc button.op{background:var(--purple);color:#fff;}.calc button.eq{background:var(--indigo);color:#fff;}.calc button.clr{background:var(--red);color:#fff;}
+.todo-item{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px;margin-bottom:8px;}
+.todo-item.done span{text-decoration:line-through;color:#9ca3af;}
+.stat{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-align:center;}
+.stat .n{font-size:1.8rem;font-weight:800;color:var(--indigo);}
+/* Footer */
+footer{background:#16131f;color:#cfd0e8;padding:54px 0 26px;}
+footer .grid{gap:30px;}
+footer h4{color:#fff;margin:0 0 14px;}
+footer a{color:#a5a7c4;display:block;padding:3px 0;}
+footer a:hover{color:#fff;}
+footer .meta{display:flex;align-items:center;gap:8px;margin:6px 0;color:#cfd0e8;}
+footer .bottom{border-top:1px solid #2a2640;margin-top:34px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.9rem;color:#9a9cbe;}
+.heart{color:var(--pink);}
+.fade-up{opacity:0;transform:translateY(24px);transition:.6s;}
+.fade-up.in{opacity:1;transform:none;}
+.bs-scope .btn{border-radius:.375rem;padding:.375rem .75rem;font-weight:400;}
+.scrolltop{position:fixed;right:22px;bottom:22px;z-index:99;border:none;border-radius:50%;width:48px;height:48px;background:var(--indigo);color:#fff;box-shadow:var(--shadow);display:none;cursor:pointer;font-size:1.1rem;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <a href="#home" class="brand"><i class="bi bi-stars" style="color:#a855f7"></i> Sanskriti <span>Sapkota</span></a>
+    <button class="burger" onclick="document.getElementById('menu').classList.toggle('open')"><i class="bi bi-list"></i></button>
+    <ul id="menu" onclick="document.getElementById('menu').classList.remove('open')">
+      <li><a class="link active" href="#home">Home</a></li>
+      <li><a class="link" href="#fullstack">Full Stack</a></li>
+      <li><a class="link" href="#html">HTML</a></li>
+      <li><a class="link" href="#css">CSS</a></li>
+      <li><a class="link" href="#bootstrap">Bootstrap</a></li>
+      <li><a class="link" href="#javascript">JavaScript</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HOME ===== -->
+<header id="home" class="hero">
+  <div class="container">
+    <span class="eyebrow"><i class="bi bi-mortarboard"></i> ISMT College, Butwal · CET138</span>
+    <h1>Full Stack Development ePortfolio</h1>
+    <p>Hi, I'm <strong>Sanskriti Sapkota</strong>. This single-page portfolio demonstrates my understanding of modern web development across five areas — each with a clear explanation and a live, working example you can interact with.</p>
+    <div class="tags">
+      <span class="tag"><i class="bi bi-stack"></i> Full Stack</span>
+      <span class="tag"><i class="bi bi-filetype-html"></i> HTML</span>
+      <span class="tag"><i class="bi bi-palette"></i> CSS</span>
+      <span class="tag"><i class="bi bi-bootstrap"></i> Bootstrap</span>
+      <span class="tag"><i class="bi bi-filetype-js"></i> JavaScript</span>
+    </div>
+    <div style="margin-top:28px;">
+      <a href="#fullstack" class="btn btn-light">Start the tour <i class="bi bi-arrow-down"></i></a>
+      <a href="#javascript" class="btn btn-outline-w">Jump to live demos</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== FULL STACK ===== -->
+<div class="band b-fs"><div class="container"><span class="eyebrow"><i class="bi bi-stack"></i> Section 1</span><h2>Full Stack Development</h2><div class="tags"><span class="tag">Front-end</span><span class="tag">Back-end</span><span class="tag">Database</span></div></div></div>
+<section id="fullstack">
+  <div class="container">
+    <div class="sec-head"><h2>What is Full Stack Development?</h2><p>Explained in my own words</p></div>
+    <div class="grid g2" style="align-items:start;">
+      <div class="feature fade-up">
+        <p>Full stack development means being able to build <strong>both sides</strong> of a web application. The <strong>front-end</strong> is everything you see and click — the layout, colours and buttons in the browser. The <strong>back-end</strong> is the hidden engine on a server that handles logic, accounts and security. The <strong>database</strong> is where information is permanently stored. A “full stack” developer can work across all three layers.</p>
+        <p style="margin-bottom:0">This whole portfolio is the front-end layer in action; the diagram shows how a request flows through the stack.</p>
+      </div>
+      <div class="feature fade-up">
+        <h4 style="margin-top:0">How a request flows</h4>
+        <div class="layer l-front"><strong><i class="bi bi-window-desktop"></i> Front-end (Client)</strong><br><small>Browser — HTML / CSS / JS</small></div>
+        <div class="arrow"><i class="bi bi-arrow-down-up"></i></div>
+        <div class="layer l-back"><strong><i class="bi bi-hdd-network"></i> Back-end (Server)</strong><br><small>Processes logic & requests</small></div>
+        <div class="arrow"><i class="bi bi-arrow-down-up"></i></div>
+        <div class="layer l-db"><strong><i class="bi bi-database"></i> Database</strong><br><small>Stores & returns data</small></div>
+        <p style="text-align:center;margin:12px 0 0"><button class="btn btn-sm btn-grad" onclick="animateStack()"><i class="bi bi-play-fill"></i> Animate the flow</button></p>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:54px;"><h2>Full Stack Architecture</h2><p>The three main layers of a web application</p></div>
+    <div class="grid g3">
+      <div class="card fade-up"><div class="head head-blue"><i class="bi bi-window-desktop"></i> Front-End</div><div class="body"><p style="color:var(--muted)">The presentation layer users interact with directly.</p><div><span class="badge2 b-html">HTML</span><span class="badge2 b-css">CSS</span><span class="badge2 b-js">JavaScript</span><span class="badge2 b-react">React</span></div><ul style="color:var(--muted);margin-top:12px;"><li>User interface design</li><li>User experience</li><li>Responsive design</li></ul></div></div>
+      <div class="card fade-up"><div class="head head-green"><i class="bi bi-hdd-network"></i> Back-End</div><div class="body"><p style="color:var(--muted)">Server-side logic that processes requests and manages data.</p><div><span class="badge2 b-node">Node.js</span><span class="badge2 b-py">Python</span><span class="badge2 b-php">PHP</span></div><ul style="color:var(--muted);margin-top:12px;"><li>API development</li><li>Business logic</li><li>Authentication</li></ul></div></div>
+      <div class="card fade-up"><div class="head head-orange"><i class="bi bi-database"></i> Database</div><div class="body"><p style="color:var(--muted)">Storage layer for persistent application data.</p><div><span class="badge2 b-sql">MySQL</span><span class="badge2 b-mongo">MongoDB</span></div><ul style="color:var(--muted);margin-top:12px;"><li>Data storage</li><li>Data retrieval</li><li>Data integrity</li></ul></div></div>
+    </div>
+
+    <div class="sec-head" style="margin-top:54px;"><h2>Technology Stack</h2><p>Popular technologies for each layer</p></div>
+    <div class="fade-up"><table class="tbl"><thead><tr><th>Layer</th><th>Technologies</th><th>Purpose</th></tr></thead><tbody>
+      <tr><td><strong>Front-End</strong></td><td><span class="badge2 b-html">HTML</span><span class="badge2 b-css">CSS</span><span class="badge2 b-js">JavaScript</span><span class="badge2 b-react">React</span></td><td>User interface and experience</td></tr>
+      <tr><td><strong>Back-End</strong></td><td><span class="badge2 b-node">Node.js</span><span class="badge2 b-py">Python</span><span class="badge2 b-php">PHP</span></td><td>Server-side logic and APIs</td></tr>
+      <tr><td><strong>Database</strong></td><td><span class="badge2 b-sql">MySQL</span><span class="badge2 b-mongo">MongoDB</span></td><td>Data storage and management</td></tr>
+    </tbody></table></div>
+
+    <div class="sec-head" style="margin-top:54px;"><h2>Why It Matters</h2><p>Common questions answered</p></div>
+    <div style="max-width:780px;margin:0 auto;">
+      <div class="acc-item fade-up open"><button class="acc-q" onclick="toggleAcc(this)">What makes full stack developers valuable? <i class="bi bi-chevron-down chev"></i></button><div class="acc-a"><p>They understand the entire web development process, making them versatile problem-solvers who can work on any part of a project — front-end, back-end or database.</p></div></div>
+      <div class="acc-item fade-up"><button class="acc-q" onclick="toggleAcc(this)">How does it improve career prospects? <i class="bi bi-chevron-down chev"></i></button><div class="acc-a"><p>Knowing the whole stack means you can build complete features on your own, communicate clearly with specialists, and adapt to many roles.</p></div></div>
+      <div class="acc-item fade-up"><button class="acc-q" onclick="toggleAcc(this)">How do the layers communicate? <i class="bi bi-chevron-down chev"></i></button><div class="acc-a"><p>The front-end sends a request, the back-end applies logic and security and reads/writes the database, then returns a response for the front-end to display.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HTML ===== -->
+<div class="band b-html"><div class="container"><span class="eyebrow"><i class="bi bi-filetype-html"></i> Section 2</span><h2>HTML — Structure of the Web</h2><div class="tags"><span class="tag">Tags</span><span class="tag">Forms</span><span class="tag">Tables</span><span class="tag">Semantic</span></div></div></div>
+<section id="html" class="alt">
+  <div class="container">
+    <div class="sec-head"><h2>What is HTML?</h2><p>Explained in my own words</p></div>
+    <div class="feature fade-up" style="max-width:820px;margin:0 auto 40px;"><p style="margin:0">HTML (HyperText Markup Language) is the <strong>skeleton</strong> of a web page. It uses <em>tags</em> to label content so the browser knows what each part is — a heading, a paragraph, a list, a link or an image. It is not a programming language; it is a markup language that structures content.</p></div>
+    <div class="grid g2">
+      <div class="feature fade-up"><div class="ic" style="background:linear-gradient(135deg,#ef4444,#f87171)"><i class="bi bi-diagram-3"></i></div><h4>Structure &amp; Organization</h4><p style="color:var(--muted)">HTML organises content into logical sections like headers, paragraphs and lists.</p><ul style="color:var(--muted)"><li>Hierarchical document structure</li><li>Logical content organization</li><li>Cross-platform compatibility</li></ul></div>
+      <div class="feature fade-up"><div class="ic" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><i class="bi bi-universal-access"></i></div><h4>Accessibility &amp; SEO</h4><p style="color:var(--muted)">Semantic HTML helps assistive tech and search engines understand content.</p><ul style="color:var(--muted)"><li>Screen reader compatibility</li><li>Search engine optimization</li><li>Better user experience</li></ul></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Basic HTML Elements</h2><p>The building blocks of web pages</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-red"><i class="bi bi-type-h1"></i> Headings &amp; Text</div><div class="body"><pre class="code">&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Section Heading&lt;/h2&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;Text can be &lt;strong&gt;bold&lt;/strong&gt;
+   or &lt;em&gt;italic&lt;/em&gt;.&lt;/p&gt;</pre><div class="preview"><div class="lbl">Preview</div><h3 style="margin:.2rem 0">Main Heading</h3><h4 style="margin:.2rem 0">Section Heading</h4><p style="margin:.3rem 0">This is a paragraph.</p><p style="margin:.3rem 0">Text can be <strong>bold</strong> or <em>italic</em>.</p></div></div></div>
+      <div class="card fade-up"><div class="head head-orange"><i class="bi bi-link-45deg"></i> Links &amp; Lists</div><div class="body"><pre class="code">&lt;a href="https://example.com"&gt;Visit&lt;/a&gt;
+&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;&lt;li&gt;Step one&lt;/li&gt;&lt;/ol&gt;</pre><div class="preview"><div class="lbl">Preview</div><a href="https://example.com" target="_blank" rel="noopener" style="color:var(--blue)">Visit website</a><ul style="margin:.4rem 0"><li>First item</li><li>Second item</li></ul><ol style="margin:.4rem 0"><li>Step one</li></ol></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Forms &amp; Tables</h2><p>Interactive forms and structured data</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-green"><i class="bi bi-input-cursor-text"></i> HTML Forms</div><div class="body"><pre class="code">&lt;form&gt;
+  &lt;label&gt;Name:&lt;/label&gt;
+  &lt;input type="text" required&gt;
+  &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</pre><div class="preview"><div class="lbl">Preview</div><form onsubmit="event.preventDefault();this.querySelector('.msg').textContent='✓ Submitted (demo)';"><div class="field"><label>Name</label><input type="text" required></div><div class="field"><label>Email</label><input type="email" required></div><button class="btn btn-green btn-sm" type="submit">Submit</button> <span class="msg" style="color:var(--green);font-weight:600;"></span></form></div></div></div>
+      <div class="card fade-up"><div class="head head-orange"><i class="bi bi-table"></i> HTML Tables</div><div class="body"><pre class="code">&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Course&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Sanskriti&lt;/td&gt;&lt;td&gt;CET138&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre><div class="preview"><div class="lbl">Preview</div><table class="tbl"><thead><tr><th>Name</th><th>Course</th></tr></thead><tbody><tr><td>Sanskriti Sapkota</td><td>CET138 Full Stack</td></tr></tbody></table></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Semantic HTML &amp; Live Editor</h2><p>Semantic tags add meaning — and you can try HTML live</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-cyan"><i class="bi bi-file-earmark-code"></i> Document Structure</div><div class="body"><pre class="code">&lt;header&gt;&lt;nav&gt;Menu&lt;/nav&gt;&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Title&lt;/h1&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;Footer&lt;/footer&gt;</pre><p style="color:var(--muted);margin:14px 0 0"><strong>Why semantic?</strong> Tags like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code> describe the meaning of each part.</p></div></div>
+      <div class="card fade-up"><div class="head head-indigo"><i class="bi bi-code-slash"></i> Try It Live</div><div class="body"><label style="font-weight:600;font-size:.9rem;">Type HTML:</label><textarea id="htmlInput" style="width:100%;min-height:120px;border-radius:10px;border:1px solid #cbd5e1;padding:12px;font-family:'Fira Code',monospace;font-size:.82rem;margin:6px 0;">&lt;h2&gt;Hello! 👋&lt;/h2&gt;
+&lt;p&gt;I am learning &lt;strong&gt;HTML&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Structure&lt;/li&gt;&lt;li&gt;Semantics&lt;/li&gt;&lt;/ul&gt;</textarea><div class="preview"><div class="lbl">Live Preview</div><iframe id="htmlPreview" style="width:100%;min-height:120px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;" title="preview"></iframe></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CSS ===== -->
+<div class="band b-css"><div class="container"><span class="eyebrow"><i class="bi bi-palette"></i> Section 3</span><h2>CSS — Styling the Web</h2><div class="tags"><span class="tag">Colours</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag">Responsive</span></div></div></div>
+<section id="css">
+  <div class="container">
+    <div class="sec-head"><h2>What is CSS?</h2><p>Explained in my own words</p></div>
+    <div class="feature fade-up" style="max-width:820px;margin:0 auto;"><p style="margin:0">CSS (Cascading Style Sheets) is what makes a web page <strong>look good</strong>. It controls colours, fonts, spacing, borders and how elements are arranged. If HTML is the skeleton, CSS is the outfit and makeup. CSS also makes a site <strong>responsive</strong> across phones, tablets and desktops.</p></div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Colours, Fonts, Borders &amp; Spacing</h2><p>How CSS properties style a page</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-blue"><i class="bi bi-palette2"></i> Colours &amp; Fonts</div><div class="body"><pre class="code">.my-text {
+  color: #2563eb;
+  background: #eff6ff;
+  font-family: 'Poppins';
+  font-weight: 600;
+}</pre><div class="preview"><div class="lbl">Preview</div><p style="color:#2563eb;background:#eff6ff;font-weight:600;padding:8px 12px;border-radius:8px;margin:0;">This text is styled with CSS!</p></div></div></div>
+      <div class="card fade-up"><div class="head head-indigo"><i class="bi bi-bounding-box"></i> Borders &amp; Spacing</div><div class="body"><pre class="code">.box {
+  border: 2px solid #6366f1;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 16px rgba(99,102,241,.2);
+}</pre><div class="preview"><div class="lbl">Preview</div><div style="border:2px solid #6366f1;border-radius:12px;padding:14px;box-shadow:0 6px 16px rgba(99,102,241,.2);">Styled box with border and shadow</div></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Interactive CSS Demo</h2><p>Hover the buttons to see transitions</p></div>
+    <div class="grid g3 fade-up" style="max-width:760px;margin:0 auto;"><button class="hoverbtn c1">Hover for Colour Change</button><button class="hoverbtn c2">Hover for Scale Effect</button><button class="hoverbtn c3">Hover for Rotation</button></div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Live CSS Playground</h2><p>Move the controls to restyle the element instantly</p></div>
+    <div class="feature fade-up" style="max-width:760px;margin:0 auto;"><div id="liveTarget" class="live-target" style="margin-bottom:18px;">Style me with the controls below! 🎨</div><div class="grid g4"><div class="field"><label>Background</label><input type="color" id="cBg" value="#eef2ff"></div><div class="field"><label>Text colour</label><input type="color" id="cFg" value="#6366f1"></div><div class="field"><label>Roundness <span id="rVal">14</span>px</label><input type="range" id="cRad" min="0" max="60" value="14"></div><div class="field"><label>Padding <span id="pVal">26</span>px</label><input type="range" id="cPad" min="6" max="60" value="26"></div></div></div>
+    <div class="sec-head" style="margin-top:54px;"><h2>CSS Layouts</h2><p>Flexbox and Grid</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-green"><i class="bi bi-distribute-horizontal"></i> Flexbox</div><div class="body"><pre class="code">.flex { display: flex; justify-content: center; gap: 10px; }</pre><div class="preview"><div class="lbl">Preview</div><div class="flex-demo" id="flexDemo"><div class="box">1</div><div class="box">2</div><div class="box">3</div></div><div style="margin-top:10px;text-align:center;"><button class="btn btn-sm btn-purple" onclick="setFlex('flex-start')">start</button> <button class="btn btn-sm btn-purple" onclick="setFlex('center')">center</button> <button class="btn btn-sm btn-purple" onclick="setFlex('space-between')">space-between</button></div></div></div></div>
+      <div class="card fade-up"><div class="head head-cyan"><i class="bi bi-grid-3x3-gap"></i> CSS Grid</div><div class="body"><pre class="code">.grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }</pre><div class="preview"><div class="lbl">Preview</div><div class="grid-demo"><div class="box">A</div><div class="box">B</div><div class="box">C</div><div class="box">D</div><div class="box">E</div><div class="box">F</div></div></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Responsive Design</h2><p>Media queries adapt the layout</p></div>
+    <div class="card fade-up" style="max-width:760px;margin:0 auto;"><div class="head head-orange"><i class="bi bi-phone"></i> Media Queries</div><div class="body"><pre class="code">/* Mobile-first base */
+.container { width: 100%; }
+/* Tablet */
+@media (min-width: 768px) { .container { width: 720px; } }
+/* Desktop */
+@media (min-width: 1140px) { .container { width: 1140px; } }</pre><p style="color:var(--muted);margin:14px 0 0"><strong>Try it:</strong> resize this window — the navbar collapses and the card grids stack on small screens, all driven by media queries.</p></div></div>
+  </div>
+</section>
+
+<!-- ===== BOOTSTRAP ===== -->
+<div class="band b-bs"><div class="container"><span class="eyebrow"><i class="bi bi-bootstrap"></i> Section 4</span><h2>Bootstrap — Rapid Development</h2><div class="tags"><span class="tag">Components</span><span class="tag">Grid</span><span class="tag">Utilities</span></div></div></div>
+<section id="bootstrap" class="alt bs-scope">
+  <div class="container">
+    <div class="sec-head"><h2>What is Bootstrap?</h2><p>Explained in my own words</p></div>
+    <div class="feature fade-up" style="max-width:820px;margin:0 auto;"><p style="margin:0">Bootstrap is a <strong>front-end framework</strong> — a library of ready-made, mobile-friendly components and a responsive 12-column grid. Instead of writing every style from scratch, I add pre-built classes like <code>btn</code>, <code>card</code> and <code>col-md-6</code>. I chose it because it speeds up development and is used widely in industry.</p></div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Grid System</h2><p>12 columns that adapt to screen size</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-green"><i class="bi bi-grid-1x2"></i> Grid Classes</div><div class="body"><pre class="code">&lt;div class="row"&gt;
+  &lt;div class="col-md-6"&gt;Col 1&lt;/div&gt;
+  &lt;div class="col-md-6"&gt;Col 2&lt;/div&gt;
+&lt;/div&gt;</pre></div></div>
+      <div class="card fade-up"><div class="head head-teal"><i class="bi bi-columns-gap"></i> Responsive Demo</div><div class="body"><div class="row g-2 mb-2"><div class="col-6"><div class="p-3 text-white text-center rounded" style="background:#2563eb">col-6</div></div><div class="col-6"><div class="p-3 text-white text-center rounded" style="background:#64748b">col-6</div></div></div><div class="row g-2"><div class="col-4"><div class="p-3 text-white text-center rounded" style="background:#06b6d4">1/3</div></div><div class="col-8"><div class="p-3 text-white text-center rounded" style="background:#f59e0b">2/3</div></div></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Components</h2><p>Pre-built UI ready to use</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-blue"><i class="bi bi-ui-checks"></i> Buttons</div><div class="body"><button class="btn btn-primary m-1">Primary</button><button class="btn btn-success m-1">Success</button><button class="btn btn-danger m-1">Danger</button><button class="btn btn-warning m-1">Warning</button><button class="btn btn-outline-primary m-1">Outline</button></div></div>
+      <div class="card fade-up"><div class="head head-orange"><i class="bi bi-bell"></i> Alerts</div><div class="body"><div class="alert alert-success py-2"><i class="bi bi-check-circle"></i> Success alert with icon</div><div class="alert alert-warning py-2"><i class="bi bi-exclamation-triangle"></i> Warning alert</div><div class="alert alert-danger py-2 mb-0"><i class="bi bi-x-circle"></i> Danger alert</div></div></div>
+      <div class="card fade-up"><div class="head head-cyan"><i class="bi bi-card-heading"></i> Cards &amp; Modal</div><div class="body"><div class="card mb-2" style="border-radius:10px;"><div class="card-body"><span class="badge bg-primary mb-2">Featured</span><h5 class="card-title">Special title</h5><p class="card-text small text-muted">Supporting text as a lead-in.</p><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#demoModal">Open Modal</button></div></div></div></div>
+      <div class="card fade-up"><div class="head head-purple"><i class="bi bi-tags"></i> Badges &amp; Accordion</div><div class="body"><span class="badge bg-primary">Primary</span> <span class="badge bg-success">Success</span> <span class="badge rounded-pill bg-info">Pill</span><div class="accordion mt-2" id="acc"><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#a1">Why use a framework?</button></h2><div id="a1" class="accordion-collapse collapse" data-bs-parent="#acc"><div class="accordion-body small">Tested, accessible, responsive building blocks so you focus on content.</div></div></div></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Interactive Form</h2><p>Bootstrap form components with validation</p></div>
+    <div class="card fade-up" style="max-width:680px;margin:0 auto;"><div class="head head-green"><i class="bi bi-clipboard-check"></i> Student Registration Form</div><div class="body"><form class="needs-validation" novalidate onsubmit="event.preventDefault();if(this.checkValidity()){var m=document.getElementById('formMsg');m.className='alert alert-success';m.textContent='✓ Registered successfully (demo)!';}this.classList.add('was-validated');"><div class="row g-3"><div class="col-md-6"><label class="form-label">Full Name</label><input class="form-control" required></div><div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" required></div><div class="col-md-6"><label class="form-label">Course</label><select class="form-select" required><option value="">Choose...</option><option>CET138 Full Stack</option></select></div><div class="col-md-6"><label class="form-label">Experience</label><select class="form-select" required><option value="">Choose...</option><option>Beginner</option><option>Intermediate</option></select></div><div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" required id="agree"><label class="form-check-label" for="agree">I agree to the terms</label></div></div></div><div class="mt-3"><button class="btn btn-success" type="submit"><i class="bi bi-check2"></i> Register Now</button><button class="btn btn-outline-secondary ms-2" type="reset">Reset</button></div><div id="formMsg" class="mt-3"></div></form></div></div>
+  </div>
+</section>
+
+<!-- ===== JAVASCRIPT ===== -->
+<div class="band b-js"><div class="container"><span class="eyebrow"><i class="bi bi-filetype-js"></i> Section 5</span><h2>JavaScript — Bringing Life to the Web</h2><div class="tags"><span class="tag">DOM</span><span class="tag">Events</span><span class="tag">Projects</span></div></div></div>
+<section id="javascript">
+  <div class="container">
+    <div class="sec-head"><h2>What is JavaScript?</h2><p>Explained in my own words</p></div>
+    <div class="feature fade-up" style="max-width:820px;margin:0 auto;"><p style="margin:0">JavaScript is the <strong>brain</strong> of a web page. It makes things happen when you interact — responding to clicks, changing content, doing calculations and updating the page without reloading. Below are real, working mini-projects built using variables, functions, DOM manipulation and event handling.</p></div>
+    <div class="sec-head" style="margin-top:54px;"><h2>DOM Manipulation</h2><p>Interacting with HTML elements</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-blue"><i class="bi bi-cursor"></i> Element Selection</div><div class="body"><pre class="code">const title = document.getElementById('myTitle');
+title.textContent = 'New Title';
+title.style.color = 'blue';</pre><div class="preview"><div class="lbl">Live Demo</div><h4 id="myTitle" style="margin:.3rem 0">Original Title</h4><button class="btn btn-sm btn-blue" onclick="document.getElementById('myTitle').textContent='Changed by JS!'">Change Text</button> <button class="btn btn-sm btn-purple" onclick="var t=document.getElementById('myTitle');t.style.color=t.style.color==='rgb(168, 85, 247)'?'#1e1b2e':'#a855f7'">Change Colour</button> <button class="btn btn-sm btn-red" onclick="var t=document.getElementById('myTitle');t.textContent='Original Title';t.style.color='#1e1b2e'">Reset</button></div></div></div>
+      <div class="card fade-up"><div class="head head-green"><i class="bi bi-plus-square"></i> Creating Elements</div><div class="body"><pre class="code">const div = document.createElement('div');
+div.textContent = 'New element!';
+container.appendChild(div);</pre><div class="preview"><div class="lbl">Live Demo</div><button class="btn btn-sm btn-green" onclick="createEl()">Create Element</button> <button class="btn btn-sm btn-red" onclick="document.getElementById('elHolder').innerHTML=''">Remove All</button><div id="elHolder" style="margin-top:10px;"></div></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Event Handling</h2><p>Responding to user actions</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-red"><i class="bi bi-hand-index-thumb"></i> Click Events</div><div class="body"><pre class="code">let count = 0;
+btn.addEventListener('click', () => {
+  count++; display.textContent = count;
+});</pre><div class="preview" style="text-align:center;"><div class="lbl">Live Demo</div><div class="counter-num" id="countNum">0</div><button class="btn btn-sm btn-red" id="countBtn"><i class="bi bi-plus-lg"></i> Click me</button> <button class="btn btn-sm btn-purple" onclick="count=0;document.getElementById('countNum').textContent=0">Reset</button></div></div></div>
+      <div class="card fade-up"><div class="head head-orange"><i class="bi bi-input-cursor"></i> Form Events</div><div class="body"><pre class="code">form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (name.length < 2) alert('Too short!');
+});</pre><div class="preview"><div class="lbl">Live Demo</div><form onsubmit="event.preventDefault();var v=this.q.value.trim();this.r.textContent=v.length<2?'⚠ Name too short!':'✓ Submitted: '+v;this.r.style.color=v.length<2?'#ef4444':'#16a34a';"><input name="q" placeholder="Enter your name" style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:8px;"><button class="btn btn-sm btn-orange" type="submit">Submit</button> <span name="r" class="r" style="font-weight:600;"></span></form></div></div></div>
+    </div>
+    <div class="sec-head" style="margin-top:54px;"><h2>Interactive Projects</h2><p>Working mini-projects built with JavaScript</p></div>
+    <div class="grid g2">
+      <div class="card fade-up"><div class="head head-indigo"><i class="bi bi-calculator"></i> Simple Calculator</div><div class="body calc"><div class="display" id="calcDisp">0</div><div class="keys"><button class="clr" onclick="cClear()">C</button><button class="op" onclick="cIn('/')">/</button><button class="op" onclick="cIn('*')">*</button><button class="op" onclick="cDel()">←</button><button onclick="cIn('7')">7</button><button onclick="cIn('8')">8</button><button onclick="cIn('9')">9</button><button class="op" onclick="cIn('-')">-</button><button onclick="cIn('4')">4</button><button onclick="cIn('5')">5</button><button onclick="cIn('6')">6</button><button class="op" onclick="cIn('+')">+</button><button onclick="cIn('1')">1</button><button onclick="cIn('2')">2</button><button onclick="cIn('3')">3</button><button class="eq" onclick="cEq()">=</button><button onclick="cIn('0')">0</button><button onclick="cIn('.')">.</button></div></div></div>
+      <div class="card fade-up"><div class="head head-green"><i class="bi bi-check2-square"></i> To-Do List</div><div class="body"><div style="display:flex;gap:8px;margin-bottom:12px;"><input id="todoInput" placeholder="Add a task..." style="flex:1;padding:9px 12px;border:1px solid #cbd5e1;border-radius:8px;" onkeydown="if(event.key==='Enter')addTodo()"><button class="btn btn-sm btn-green" onclick="addTodo()">Add</button></div><div id="todoList"></div><p class="small" style="color:var(--muted);margin:8px 0 0">Total tasks: <span id="todoCount">0</span></p></div></div>
+      <div class="card fade-up"><div class="head head-purple"><i class="bi bi-palette2"></i> Colour Changer</div><div class="body"><div id="colorBox" class="live-target" style="margin-bottom:14px;">Click a colour! 🎨</div><div style="text-align:center;"><span class="swatch" style="background:#ef4444" onclick="setColor('#ef4444')"></span> <span class="swatch" style="background:#16a34a" onclick="setColor('#16a34a')"></span> <span class="swatch" style="background:#2563eb" onclick="setColor('#2563eb')"></span> <span class="swatch" style="background:#eab308" onclick="setColor('#eab308')"></span> <button class="btn btn-sm btn-purple" onclick="setColor('random')">Random</button></div></div></div>
+      <div class="card fade-up"><div class="head head-cyan"><i class="bi bi-fonts"></i> Text Analyzer</div><div class="body"><textarea id="anaInput" rows="3" placeholder="Type to analyze..." style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:12px;">Hello, I am Sanskriti. I am learning full stack development!</textarea><div class="grid g3"><div class="stat"><div class="n" id="charCount">0</div><div class="small">Characters</div></div><div class="stat"><div class="n" id="wordCount">0</div><div class="small">Words</div></div><div class="stat"><div class="n" id="sentCount">0</div><div class="small">Sentences</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content" style="border-radius:16px;"><div class="modal-header text-white" style="background:linear-gradient(90deg,#7952b3,#a855f7);border-radius:16px 16px 0 0;"><h5 class="modal-title"><i class="bi bi-window-stack"></i> Bootstrap Modal</h5><button class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body">This pop-up is a Bootstrap <code>modal</code> — opening, closing and the overlay are handled by Bootstrap's JS bundle with no custom code.</div><div class="modal-footer"><button class="btn btn-primary" data-bs-dismiss="modal">Got it</button></div></div></div></div>
+
+<footer>
+  <div class="container">
+    <div class="grid g3">
+      <div><h4><i class="bi bi-stars"></i> Sanskriti Sapkota</h4><p>Student passionate about clean, interactive web experiences.</p><div class="meta"><i class="bi bi-building"></i> ISMT College, Butwal</div><div class="meta"><i class="bi bi-journal-bookmark"></i> CET138 Full Stack Development</div></div>
+      <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#fullstack">Full Stack Development</a><a href="#html">HTML</a><a href="#css">CSS</a><a href="#bootstrap">Bootstrap</a><a href="#javascript">JavaScript</a></div>
+      <div><h4>Learning Resources</h4><a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN Web Docs</a><a href="https://getbootstrap.com" target="_blank" rel="noopener">Bootstrap Documentation</a><a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a><a href="https://javascript.info" target="_blank" rel="noopener">JavaScript.info</a></div>
+    </div>
+    <div class="bottom"><span>© 2026 Sanskriti Sapkota — CET138 Full Stack Development, ISMT Butwal</span><span>Built with <span class="heart"><i class="bi bi-heart-fill"></i></span> using HTML, CSS, Bootstrap &amp; JavaScript</span></div>
+  </div>
+</footer>
+
+<button class="scrolltop" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* fade-up on scroll */
+document.addEventListener('DOMContentLoaded',()=>{
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+});
+/* accordion (full stack) */
+function toggleAcc(btn){btn.closest('.acc-item').classList.toggle('open');}
+/* full stack animate */
+function animateStack(){document.querySelectorAll('#fullstack .layer').forEach((l,i)=>{setTimeout(()=>{l.style.transform='scale(1.05)';l.style.transition='transform .3s';setTimeout(()=>l.style.transform='scale(1)',300);},i*340);});}
+/* HTML live editor */
+const htmlInput=document.getElementById('htmlInput'),htmlPreview=document.getElementById('htmlPreview');
+function renderHTML(){const d=htmlPreview.contentDocument;d.open();d.write('<style>body{font-family:Poppins,sans-serif;color:#1e1b2e;padding:8px;margin:0;}a{color:#2563eb;}</style>'+htmlInput.value);d.close();}
+htmlInput.addEventListener('input',renderHTML);renderHTML();
+/* CSS playground */
+function setFlex(v){document.getElementById('flexDemo').style.justifyContent=v;}
+const t=document.getElementById('liveTarget'),cBg=document.getElementById('cBg'),cFg=document.getElementById('cFg'),cRad=document.getElementById('cRad'),cPad=document.getElementById('cPad');
+function upd(){t.style.background=cBg.value;t.style.color=cFg.value;t.style.borderRadius=cRad.value+'px';t.style.padding=cPad.value+'px';rVal.textContent=cRad.value;pVal.textContent=cPad.value;}
+[cBg,cFg,cRad,cPad].forEach(e=>e.addEventListener('input',upd));upd();
+/* JS: creating elements */
+let elc=0;
+function createEl(){const d=document.createElement('div');d.style.cssText='background:#dcfce7;color:#166534;border-radius:8px;padding:8px 12px;margin-top:6px;font-weight:600;';d.textContent='✓ Element #'+(++elc)+' created!';document.getElementById('elHolder').appendChild(d);}
+/* JS: counter */
+let count=0;
+document.getElementById('countBtn').addEventListener('click',()=>{count++;document.getElementById('countNum').textContent=count;});
+/* JS: calculator */
+let cs='';const cd=document.getElementById('calcDisp');
+function cRn(){cd.textContent=cs||'0';}
+function cIn(v){cs+=v;cRn();}function cClear(){cs='';cRn();}function cDel(){cs=cs.slice(0,-1);cRn();}
+function cEq(){try{if(!cs)return;cs=String(Function('"use strict";return ('+cs+')')());}catch(e){cs='Error';}cRn();}
+/* JS: to-do */
+let todos=[];
+function renderTodos(){const l=document.getElementById('todoList');l.innerHTML='';todos.forEach((td,i)=>{const d=document.createElement('div');d.className='todo-item'+(td.done?' done':'');d.innerHTML='<span style="cursor:pointer" onclick="toggleTodo('+i+')"><i class="bi bi-'+(td.done?'check-circle-fill':'circle')+'" style="color:#16a34a"></i> '+td.text+'</span><button class="btn btn-sm btn-red" onclick="removeTodo('+i+')"><i class="bi bi-trash"></i></button>';l.appendChild(d);});document.getElementById('todoCount').textContent=todos.length;}
+function addTodo(){const i=document.getElementById('todoInput');if(!i.value.trim())return;todos.push({text:i.value.trim(),done:false});i.value='';renderTodos();}
+function toggleTodo(i){todos[i].done=!todos[i].done;renderTodos();}
+function removeTodo(i){todos.splice(i,1);renderTodos();}
+renderTodos();
+/* JS: colour changer */
+function setColor(c){const bx=document.getElementById('colorBox');if(c==='random')c='#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');bx.style.background=c;bx.style.color='#fff';bx.textContent=c.toUpperCase();}
+/* JS: text analyzer */
+const ana=document.getElementById('anaInput');
+function analyze(){const x=ana.value;document.getElementById('charCount').textContent=x.length;document.getElementById('wordCount').textContent=x.trim()?x.trim().split(/\s+/).length:0;document.getElementById('sentCount').textContent=(x.match(/[.!?]+/g)||[]).length;}
+ana.addEventListener('input',analyze);analyze();
+/* nav active state + scrolltop */
+const secs=[...document.querySelectorAll('section[id],header[id]')],links=[...document.querySelectorAll('.nav a.link')];
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollTop').style.display=window.scrollY>500?'block':'none';
+  let cur='home';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+</script>
+</body>
+</html>
